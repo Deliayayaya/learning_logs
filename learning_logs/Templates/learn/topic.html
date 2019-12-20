@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+    <div>
+      <div>
+        {% extends "learn/base.html" %}
+      </div>
+      {% block content %}
+      <div>
+        <p>Topics:{{topic}}</p>
+        <ul>
+          {% for entry in entries %}
+          <li>
+            <p>{{entry.date_added | date:'M d,Y H:i'}}</p>
+            <p>{{entry.text | linebreaks}}</p>
+            <a href="{% url 'learn:edit_entry' entry.id%}">edit entry</a>
+          </li>
+          {% empty %}
+          <li>There are no entries for this topic yet. </li>
+        </ul>
+        {% endfor %}
+        <a href="{% url 'learn:new_entry' topic.id %}">add Entry</a>
+      </div>
+    </div>
+    {%endblock content%}
+  </body>
+
+</html>

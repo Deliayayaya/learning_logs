@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+    <div>
+      <div>
+        {% extends "learn/base.html" %}
+      </div>
+      {% block content %}
+      <p>Topics</p>
+      <ul>
+        {% for topic in topics %}
+        <li>
+          <a href="{% url 'learn:topic' topic.id %}">{{topic.text}}</a>
+        </li>
+        {%empty%}
+        <li>No topics have been added yet.</li>
+        {% endfor %}
+      </ul>
+      <div><a href="{% url 'learn:new_topic' %}">add Topic</a></div>
+    </div>
+    {%endblock content%}
+  </body>
+
+</html>

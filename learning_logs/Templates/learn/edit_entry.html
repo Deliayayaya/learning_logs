@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+    <div>
+      {% extends "learn/base.html" %}
+    </div>
+    {%block content%}
+    <div>
+      <p><a href="{% url 'learn:topic' topic.id %}">{{ topic}}</a></p>
+      <div>edit Entry:</div>
+      <form action="{% url 'learn:edit_entry' entry.id %}" method='POST'>
+        {%csrf_token%}{{form.as_p}}
+        <button name="submit">edit entry</button>
+      </form>
+    </div>
+    {%endblock content%}
+  </body>
+
+</html>

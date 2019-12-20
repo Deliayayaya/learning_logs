@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+    {% extends 'learn/base.html'%}
+    <div>
+      {% block content%}
+      <div>Add new topic:</div>
+      <form action="{% url 'learn:new_topic' %}" method='POST'>
+        {% csrf_token %} {{form.as_p}}
+        <button name="submit">add topic</button>
+      </form>
+    </div>
+  </body>
+  {%endblock content%}
+
+</html>

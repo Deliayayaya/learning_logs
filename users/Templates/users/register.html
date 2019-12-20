@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+    {%extends 'learn/base.html'%} {%block content%}
+    <div>
+      <form action="{%url 'users:register'%}" method="POST">
+        {%csrf_token%}{{form.as_p}}
+        <button name="submit">regist</button>
+      </form>
+    </div> {%endblock content%}
+  </body>
+
+</html>
