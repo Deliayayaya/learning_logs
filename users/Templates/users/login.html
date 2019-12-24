@@ -6,15 +6,16 @@
   </head>
 
   <body>
-    {% extends "learn/base.html" %}{%block content%}
+    {% extends "learn/base.html" %} {% load bootstrap3 %} {%block header%}
+    <h2>Log in your account</h2> {%endblock header%} {%block content%}
     <div>
       {% if form.errors %}
       <p>your name or password is error</p>
       {%endif%}
-      <form action="{%url 'users:login'%}" method="POST">
+      <form action="{%url 'users:login'%}" method="POST" class='form'>
         {%csrf_token%}{{form.as_p}}
         <input type="hidden" name="next" value="{% url 'learn:index' %}" />
-        <button name="submit">login</button>
+        <button name="submit" class='btn btn-primary'>login</button>
       </form>
     </div>
     {%endblock content%}

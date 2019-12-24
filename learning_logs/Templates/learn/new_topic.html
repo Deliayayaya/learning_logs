@@ -6,16 +6,15 @@
   </head>
 
   <body>
-    {% extends 'learn/base.html'%}
+    {% extends 'learn/base.html'%} {% block header %}
+    <h2>Add a new topic:</h2> {% endblock header %} {% block content%}
     <div>
-      {% block content%}
-      <div>Add new topic:</div>
-      <form action="{% url 'learn:new_topic' %}" method='POST'>
+      <form action="{% url 'learn:new_topic' %}" method='POST' class='form'>
         {% csrf_token %} {{form.as_p}}
-        <button name="submit">add topic</button>
+        <button name="submit" class='btn btn-primary'>add topic</button>
       </form>
     </div>
+    {%endblock content%}
   </body>
-  {%endblock content%}
 
 </html>

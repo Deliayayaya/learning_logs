@@ -6,11 +6,12 @@
   </head>
 
   <body>
-    {%extends 'learn/base.html'%} {%block content%}
+    {%extends 'learn/base.html'%}{%load bootstrap3%} {%block header%}
+    <h2>Register an account</h2> {%endblock header%} {%block content%}
     <div>
-      <form action="{%url 'users:register'%}" method="POST">
+      <form action="{%url 'users:register'%}" method="POST" class="form">
         {%csrf_token%}{{form.as_p}}
-        <button name="submit">regist</button>
+        <button name="submit" class="btn btn-primary">regist</button>
       </form>
     </div> {%endblock content%}
   </body>

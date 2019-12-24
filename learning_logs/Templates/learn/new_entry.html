@@ -6,17 +6,14 @@
   </head>
 
   <body>
-    {%extends "learn/base.html"%}
+    {%extends "learn/base.html"%} {%block content %}
+    <h3><a href="{% url 'learn:topic' topic.id %}">{{ topic}}</a></h3>
+    <div>add a new Entry:</div>
     <div>
-      {%block content %}
-      <p><a href="{% url 'learn:topic' topic.id %}">{{ topic}}</a></p>
-      <div>add a new Entry:</div>
-      <div>
-        <form action="{% url 'learn:new_entry' topic.id %}" method="POST">
-          {%csrf_token%}{{form.as_p}}
-          <button name='submit'>add entry</button>
-        </form>
-      </div>
+      <form action="{% url 'learn:new_entry' topic.id %}" method="POST" class='form'>
+        {%csrf_token%}{{form.as_p}}
+        <button name='submit' class='btn btn-primary'>add entry</button>
+      </form>
     </div>
     {%endblock content%}
   </body>
